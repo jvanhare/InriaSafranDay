@@ -1,6 +1,13 @@
 import { createRoot } from "react-dom/client";
 
-import { Heading, Link, ListItem, Text, UnorderedList } from "spectacle";
+import {
+  FlexBox,
+  Heading,
+  Link,
+  ListItem,
+  Text,
+  UnorderedList,
+} from "spectacle";
 
 import "katex/dist/katex.min.css";
 import Latex from "react-latex-next";
@@ -19,149 +26,229 @@ const Presentation = () => (
   <InriaDeck>
     <Full>
       <Heading color="primary" textAlign="left">
-        Context
+        Context and motivations
       </Heading>
       <Text>
         <UnorderedList>
           <ListItem>
-            7th AIAA CFD <Alert>Drag</Alert> Prediction Workshop{" "}
-            <Link color="lightblue" href="https://aiaa-dpw.larc.nasa.gov">
-              [https://aiaa-dpw.larc.nasa.gov]
+            3rd AIAA Sonic Boom Prediction Prediction Workshop{" "}
+            <Link color="lightblue" href="https://lbpw.larc.nasa.gov/sbpw3">
+              [https://lbpw.larc.nasa.gov/sbpw3]
             </Link>
           </ListItem>
           <UnorderedList>
             <ListItem>
-              Predict the effect of shock-induced separation on the variation of
-              lift and pitching moment with increasing angle-of-attack at
-              transonic conditions
+              Two part workshop covering both the state-of-the-art for
+              predicting near field sonic boom signatures with CFD as well as
+              propagation of the near field pressures to the ground.
             </ListItem>
-            <ListItem>
-              <Alert>Critical</Alert> to aircraft safety and government
-              certification regulations
-            </ListItem>
-            <ListItem>
-              NASA CRM Wing-Body configuration{" "}
-              <Link
-                color="lightblue"
-                href="https://commonresearchmodel.larc.nasa.gov"
-              >
-                [https://commonresearchmodel.larc.nasa.gov]
-              </Link>
-            </ListItem>
-            <ListItem>
-              Special focus on Case 1a. targetting grid convergence
-            </ListItem>
-            <ListItem>Flow conditions:</ListItem>
+
+            <ListItem>C608 case flow conditions:</ListItem>
             <UnorderedList>
               <ListItem>
-                <Latex>{`$M = 0.85 ~ [-] $`}</Latex>
+                <Latex>{`$M = 1.3 ~ [-] $`}</Latex>
               </ListItem>
               <ListItem>
-                <Latex>{`$ Re = 20 \\cdot 10^6 ~ [-] $`}</Latex>
+                <Latex>{`$ Re = 376,850 ~ [in^{-1}] $`}</Latex>
               </ListItem>
               <ListItem>
-                <Latex>{`$ T = -250 ~ [^\\circ{}F] $`}</Latex>
+                <Latex>{`$ T = 374 ~ [R] $`}</Latex>
               </ListItem>
               <ListItem>
-                <Latex>{`$ C_L = 0.58 ~ [-] $`}</Latex>
+                <Latex>{`$ \\alpha = 0.0 ~ [-] $`}</Latex>
               </ListItem>
             </UnorderedList>
           </UnorderedList>
-          <ListItem>
-            Mesh convergence study achieved thanks to our{" "}
-            <Alert>anisotropic unstructured mesh adaptation</Alert> process
-          </ListItem>
         </UnorderedList>
       </Text>
     </Full>
 
     <Full>
       <Heading color="primary" textAlign="left">
-        Flow solver
+        Workshop results
       </Heading>
-      <UnorderedList>
-        <ListItem>
-          Compressible turbulent Navier-Stokes equations
-          <Equation>
-            <Latex>{`$$ \\dfrac{\\partial W}{\\partial t} + \\nabla \\cdot \\mathcal{F} \\left( W \\right) = \\mathcal{Q} \\left( W \\right) + \\mathcal{S} \\left( W \\right) $$`}</Latex>
-          </Equation>
-        </ListItem>
-        <ListItem>Spalart-Allmaras turbulence model</ListItem>
-        <ListItem>Mixed Element Volume method (MEV)</ListItem>
-        <UnorderedList>
-          <ListItem>
-            Convective and source terms by Finite Volume method
-          </ListItem>
-          <ListItem>Diffusive terms by Finite Element method</ListItem>
-        </UnorderedList>
-        <ListItem>Vertex-centered using median cells</ListItem>
-        <ListItem>Implicit time integration</ListItem>
-        <UnorderedList>
-          <ListItem>SGS iterative solver</ListItem>
-          <ListItem>
-            All terms are fully differentiated except for convective terms due
-            to memory considerations
-          </ListItem>
-          <ListItem>Strong implicit solver</ListItem>
-        </UnorderedList>
-      </UnorderedList>
-    </Full>
-
-    <Full>
-      <Heading color="primary" textAlign="left">
-        Metric-based local remesher
-      </Heading>
-      <UnorderedList>
-        <ListItem>Based on a unique cavity operator</ListItem>
-        <ListItem>
-          Remesh the surface and the volume at the same time based on geometry
-          surface definition to <Alert>insert points on the surface</Alert>
-        </ListItem>
-      </UnorderedList>
       <Image
-        fileName="metric.png"
-        legend="Metric-based local remeshing."
-        width="62%"
+        fileName="c608_symmetry.png"
+        legend="C608 Low-Boom Flight Demonstrator solution obtained with WOLF on the finest L2-norm adapted mesh"
+        width="90%"
       />
     </Full>
 
     <TwoColumns
-      title="Results"
-      left={<Image fileName="cl.svg" legend="Lift convergence." width="90%" />}
+      title="Workshop results"
+      left={
+        <Image
+          fileName="c608_dp_xcut_540.png"
+          legend={"x/L = 0.50"}
+          width="90%"
+        />
+      }
       right={
-        <Image fileName="cm.svg" legend="Moment convergence." width="90%" />
+        <Image
+          fileName="c608_dp_xcut_810.png"
+          legend={"x/L = 0.75"}
+          width="90%"
+        />
+      }
+    ></TwoColumns>
+
+    <TwoColumns
+      title="Workshop results"
+      left={
+        <Image
+          fileName="c608_dp_xcut_1080.png"
+          legend={"x/L = 1.00"}
+          width="90%"
+        />
+      }
+      right={
+        <Image
+          fileName="c608_dp_xcut_1350.png"
+          legend={"x/L = 1.25"}
+          width="90%"
+        />
+      }
+    ></TwoColumns>
+
+    <TwoColumns
+      title="Workshop results"
+      left={
+        <Image
+          fileName="c608_dp_xcut_1620.png"
+          legend={"x/L = 1.50"}
+          width="90%"
+        />
+      }
+      right={
+        <Image
+          fileName="c608_dp_xcut_1890.png"
+          legend={"x/L = 1.75"}
+          width="90%"
+        />
       }
     ></TwoColumns>
 
     <Full>
       <Heading color="primary" textAlign="left">
-        Results
+        But...
       </Heading>
-      <Image fileName="cd.svg" legend="Drag convergence." width="50%" />
+      <Image
+        fileName="c608_conv.pdf"
+        legend="Mesh convergence of C608 Low-Boom Flight Demonstrator test case"
+        width="40%"
+      />
+    </Full>
+
+    <Full>
+      <Heading color="primary" textAlign="left">
+        MPI library
+      </Heading>
+      <UnorderedList>
+        <ListItem>
+          Need for a MPI library to handle unstructured meshes
+        </ListItem>
+        <ListItem>
+          Not to <Alert>decrease</Alert> the computational time
+        </ListItem>
+        <ListItem>
+          But to <Alert>increase</Alert> the computation size
+        </ListItem>
+        <ListItem>
+          To obtain scalability, everything should be done in parallel (reading,
+          partitioning, migrating, ...)
+        </ListItem>
+        <ListItem>
+          Written in C with a clear and simple API (ReadMesh, PartMesh, ...)
+        </ListItem>
+        <ListItem>
+          Will be used to get a MPI version of WOLF and Feflo.a
+        </ListItem>
+      </UnorderedList>
+    </Full>
+
+    <TwoColumns
+      title="Distributed or partitioned?"
+      left={
+        <Image fileName="dist.pdf" legend={"Distributed view"} width="70%" />
+      }
+      right={<Image fileName="part.pdf" legend={"Part view"} width="70%" />}
+    ></TwoColumns>
+
+    <Full>
+      <Heading color="primary" textAlign="left">
+        Distributed approach
+      </Heading>
+
+      <UnorderedList>
+        <ListItem>
+          The array of triangles storing the global numbering of each triangle:
+        </ListItem>
+        <UnorderedList>
+          <ListItem>
+            On MPI rank 0 in red, the array of triangles reads: [1, 2, 3, 4, 5,
+            6, 7, 8, 9, 10, 11, 12, 13].
+          </ListItem>
+          <ListItem>
+            On MPI rank 1 in blue, the array of triangles reads: [14, 15, 16,
+            17, 18, 19, 20, 21, 22, 23, 24, 25, 26].
+          </ListItem>
+        </UnorderedList>
+        <ListItem>
+          The array of the triangles distribution, whose size is the number of
+          MPI ranks plus one, shared by all the MPI ranks reads: [0, 13, 26].
+          When used in this manner, each MPI rank knows that the triangles 1 to
+          13 are on the first MPI rank and the triangles 14 to 26 are on the
+          second MPI rank.
+        </ListItem>
+      </UnorderedList>
+
+      <Heading color="primary" textAlign="left">
+        Partitioned approach
+      </Heading>
+
+      <UnorderedList>
+        <ListItem>
+          The array of triangles storing the global numbering of each triangle:
+        </ListItem>
+        <UnorderedList>
+          <ListItem>
+            On MPI rank 0 in red, the array of triangles reads: [1, 2, 3, 4, 5,
+            6, 7, 8, 9, 10, 11, 12, 13].
+          </ListItem>
+          <ListItem>
+            On MPI rank 1 in blue, the array of triangles reads: [1, 2, 3, 4, 5,
+            6, 7, 8, 9, 10, 11, 12, 13].
+          </ListItem>
+        </UnorderedList>
+        <ListItem>
+          The array of the link between the local and the global numbering:
+        </ListItem>
+        <UnorderedList>
+          <ListItem>
+            On MPI rank 0 in red, the global numbering reads: [9, 19, 23, 20,
+            24, 8, 1, 21, 22, 6, 7, 12, 11].
+          </ListItem>
+          <ListItem>
+            On MPI rank 1 in blue, the global numbering reads: [13, 14, 4, 3,
+            18, 17, 2, 16, 26, 5, 15, 10, 25].
+          </ListItem>
+        </UnorderedList>
+      </UnorderedList>
     </Full>
 
     <Centered>
       <Heading color="secondary">Conclusions & perspectives</Heading>
       <UnorderedList>
         <ListItem>
-          Goal-oriented anisotropic mesh adaptation illustatred on a DPW7 test
-          case
+          Some applications needs very large meshes to achieve convergence
         </ListItem>
         <ListItem>
-          The geometry definition is <Alert>crucial</Alert> for mesh adaptation
-          convergence
+          Ongoing development of a general MPI library to handle unstructured
+          meshes
         </ListItem>
-        <ListItem>No compatibility between CAD kernels</ListItem>
+        <ListItem>Based on a distributed/partitioned approach</ListItem>
         <ListItem>
-          Even if the CAD format were easily readable, there is no access to the
-          parametrization needed for shape optimization problem
-        </ListItem>
-        <ListItem>
-          <Alert>No geometry, no mesh, no solution, ...</Alert>
-        </ListItem>
-        <ListItem>
-          Quantify the impact on drag of this misdefined geometry which clearly
-          does not have the right wetted surface
+          Will be used to obtain a MPI version of WOLF and Feflo.a
         </ListItem>
       </UnorderedList>
     </Centered>

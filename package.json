@@ -2,7 +2,7 @@
   "name": "spectacle",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://jvanhare.github.io/slides",
+  "homepage": "https://jvanhare.github.io/InriaSafranDay",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
     "@fortawesome/free-brands-svg-icons": "^6.4.0",

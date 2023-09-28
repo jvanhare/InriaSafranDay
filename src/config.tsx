@@ -1,8 +1,8 @@
 const config = {
-  homepage: "https://jvanhare.github.io/slides",
-  title: "Slides template",
-  shortTitle: "Slides template",
-  date: "2023-09-28",
+  homepage: "https://jvanhare.github.io/InriaSafranDay",
+  title: "MPI library to handle unstructured meshes",
+  shortTitle: "MPI",
+  date: "2023-09-29",
   place: "Palaiseau, France",
   authors: [
     {
@@ -18,7 +18,7 @@ const config = {
   ],
   speaker: "Julien Vanharen",
   shortAuthor: "J. Vanharen",
-  conference: "Slides template",
+  conference: "Inria Safran Day",
 };
 
 export default config;
