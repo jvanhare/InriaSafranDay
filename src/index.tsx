@@ -133,7 +133,7 @@ const Presentation = () => (
         But...
       </Heading>
       <Image
-        fileName="c608_conv.pdf"
+        fileName="c608_conv.png"
         legend="Mesh convergence of C608 Low-Boom Flight Demonstrator test case"
         width="40%"
       />
@@ -169,9 +169,9 @@ const Presentation = () => (
     <TwoColumns
       title="Distributed or partitioned?"
       left={
-        <Image fileName="dist.pdf" legend={"Distributed view"} width="70%" />
+        <Image fileName="dist.png" legend={"Distributed view"} width="70%" />
       }
-      right={<Image fileName="part.pdf" legend={"Part view"} width="70%" />}
+      right={<Image fileName="part.png" legend={"Part view"} width="70%" />}
     ></TwoColumns>
 
     <Full>
@@ -257,4 +257,3 @@ const Presentation = () => (
 
 const root = createRoot(document.getElementById("root")!);
 root.render(<Presentation />);
-
