@@ -1,7 +1,6 @@
 import { createRoot } from "react-dom/client";
 
 import {
-  FlexBox,
   Heading,
   Link,
   ListItem,
@@ -14,7 +13,6 @@ import Latex from "react-latex-next";
 
 import Alert from "./components/Alert";
 import Centered from "./components/Centered";
-import Equation from "./components/Equation";
 import Full from "./components/Full";
 import Image from "./components/Image";
 import InriaDeck from "./components/InriaDeck";
